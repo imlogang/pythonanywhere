@@ -39,4 +39,4 @@ jobs:
           command: |
             ssh-keyscan -H ssh.pythonanywhere.com >> ~/.ssh/known_hosts
             cd ~/project/
-            ssh -v imlogang@ssh.pythonanywhere.com "cd pythonanywhere; git pull"
+            ssh -v SSH_USER@SSH_HOST "cd pythonanywhere; git pull"
