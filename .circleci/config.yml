@@ -35,11 +35,10 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "31:85:b5:72:11:40:47:0b:af:a3:81:8f:3a:50:f4:04"
+            - "15:e9:b6:64:49:8c:81:e3:e8:59:f1:7c:03:74:c0:52"
       - run:
           name: Deploy Over SSH
           command: |
             ssh-keyscan -H ssh.pythonanywhere.com >> ~/.ssh/known_hosts
             cd ~/project/pythonanywhere
             ssh -v imlogang@ssh.pythonanywhere.com "cd testing-pyanywhere; git pull https://github.com/imlogang/Sandbox.git testing-pyanywhere"
-            
