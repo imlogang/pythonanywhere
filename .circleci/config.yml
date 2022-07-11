@@ -38,5 +38,5 @@ jobs:
           name: Deploy Over SSH
           command: |
             ssh-keyscan -H ssh.pythonanywhere.com >> ~/.ssh/known_hosts
-            cd ~/project/pythonanywhere
-            ssh -v imlogang@ssh.pythonanywhere.com "cd testing-pyanywhere; git pull https://github.com/imlogang/Sandbox.git testing-pyanywhere"
+            cd ~/project/
+            ssh -v imlogang@ssh.pythonanywhere.com "cd pythonanywhere; git pull"
