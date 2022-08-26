@@ -6,36 +6,13 @@ workflows:
   build-app-with-test:
     jobs:
       - build-and-test
-      - deploy:
-          requires:
-            - build-and-test
+
 jobs:
   build-and-test:
-    docker:
-      - image: cimg/python:3.9
+    macos:
+      xcode: 13.4
+    resource_class: macos.x86.metal.gen1
     steps:
       - checkout
-      - run: ls -la
-      - run:
-          name: Install dependencies
-          command: |
-            pipenv --three
-            pipenv install
-      - run:
-          name: Run tests
-          command: |
-            pipenv run pytest
 
-  deploy:
-    docker:
-      - image: cimg/python:3.9
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "15:e9:b6:64:49:8c:81:e3:e8:59:f1:7c:03:74:c0:52"
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ssh-keyscan -H ssh.pythonanywhere.com >> ~/.ssh/known_hosts
-            ssh -v $SSH_USER@$SSH_HOST "cd pythonanywhere; git pull"
+
