@@ -9,10 +9,11 @@ workflows:
 
 jobs:
   build-and-test:
-    macos:
-      xcode: 13.4
-    resource_class: macos.x86.metal.gen1
+    docker:
+      - image: cimg/base:latest
     steps:
       - checkout
+      - run: docker pull localstack/localstack
+      - run: docker list images 
 
 
