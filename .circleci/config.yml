@@ -17,7 +17,7 @@ jobs:
       - checkout
       - run: 
           name: ping google.com
-          command: ping google.com > /dev/null || true 
+          command: npm install > /dev/null || true 
           no_output_timeout: 1s
 
 
